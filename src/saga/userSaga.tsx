@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest, all, call } from 'redux-saga/effects';
 import { SEARCH_USER_REQUESTED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from '../constants/actionTypes';
+import { getUserData } from '../service/service';
 
 interface IUserPayload {
   type: string,
@@ -10,6 +11,7 @@ interface IUserPayload {
 
 // get list of user
 function* getUserList(): any {
+  //const response = yield call(getUserData);
   const response = yield axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
     return response
   })
