@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, searchUser } from "./actions/userAction";
+import UserList from "./components/UserList";
 
 export interface IUserList {
   name: string,
@@ -36,30 +37,12 @@ function App() {
           <i className="fas fa-search"></i>
         </span>
       </div>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>User Name</th>
-            <th>Web Site</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            userList && userList.length > 0 && userList.map((userData: IUserList) => {
-              return (
-                <tr>
-                  <td>{userData.name}</td>
-                  <td>{userData.username}</td>
-                  <td>{userData.phone}</td>
-                  <td>{userData.email}</td>
-                </tr>
-              )
-            })
-          }
-        </tbody>
-      </table>
+      {
+        userList && userList.length > 0 &&
+        <UserList
+          userList={userList}
+        />
+      }
     </div>
   );
 }
