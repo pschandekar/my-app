@@ -18,7 +18,7 @@ function* getUserList(): any {
 
 function* searchUser(action: IUserPayload): any {
   // exclude column list from filter
-  const excludeColumns = ["name", "username", "phone", "email"];
+  const excludeColumns = ["id"];
   let updatedList = action.payload;
   const searchValue = action.searchValue.toLowerCase();
 
