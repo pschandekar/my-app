@@ -11,11 +11,7 @@ interface IUserPayload {
 
 // get list of user
 function* getUserList(): any {
-  //const response = yield call(getUserData);
-  const response = yield axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
-    return response
-  })
-
+  const response = yield call(getUserData);
   yield put({ type: USER_LIST_RECEIEVED, payload: response.data });
 }
 
