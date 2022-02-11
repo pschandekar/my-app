@@ -31,18 +31,21 @@ function App() {
 
   return (
     <div className="App">
-      <div className="input-group rounded">
-        <input type="search" width={'50px'} className="form-control rounded" onChange={handleOnChangeSearch} placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+      <div className="input-group rounded search-div">
+        <input type="search" className="w-50 form-control rounded" onChange={handleOnChangeSearch} placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
         <span className="input-group-text border-0" id="search-addon">
           <i className="fas fa-search"></i>
         </span>
+
       </div>
-      {
-        userList && userList.length > 0 &&
-        <UserList
-          userList={userList}
-        />
-      }
+      <div className="user-div">
+        {
+          userList && userList.length > 0 &&
+          <UserList
+            userList={userList}
+          />
+        }
+      </div>
     </div>
   );
 }
