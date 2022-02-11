@@ -8,7 +8,7 @@ interface IUserPayload {
   searchValue: string
 }
 
-// get list of uset
+// get list of user
 function* getUserList(): any {
   const response = yield axios.get("https://jsonplaceholder.typicode.com/users").then((response) => {
     return response
@@ -17,7 +17,7 @@ function* getUserList(): any {
   yield put({ type: USER_LIST_RECEIEVED, payload: response.data });
 }
 
-// search the user ass per user input value
+// search the user as per user input value
 function* searchUser(action: IUserPayload): any {
   // exclude column list from filter
   const excludeColumns = ["id"];
