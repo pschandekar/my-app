@@ -1,4 +1,4 @@
-import { IUserList } from "../App";
+import { IUserList } from "../interface/IUserList";
 
 interface IProp {
     userList: Array<IUserList>

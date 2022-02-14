@@ -4,12 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser, searchUser } from "./actions/userAction";
 import UserList from "./components/UserList";
 
-export interface IUserList {
-  name: string,
-  username: string,
-  phone: string,
-  email: string
-}
+
 
 function App() {
   const userList = useSelector((state: any) => state.userReducer?.userList)
@@ -22,7 +17,7 @@ function App() {
 
   // search user from the list on any column
   const handleOnChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value !== '') {
+    if (event.target.value !== '' && userList && userList.length > 0) {
       dispatch(searchUser(userList, event.target.value.toLowerCase()))
     } else {
       dispatch(getUser());

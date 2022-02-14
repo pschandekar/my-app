@@ -1,5 +1,5 @@
-import { IUserList } from "../App";
 import { USER_LIST_REQUESTED, SEARCH_USER_REQUESTED } from "../constants/actionTypes";
+import { IUserList } from "../interface/IUserList";
 
 export function getUser() {
     return { type: USER_LIST_REQUESTED }
