@@ -1,5 +1,5 @@
 import { put, takeLatest, all, call } from 'redux-saga/effects';
-import { SEARCH_USER_REQUESTED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from '../constants/actionTypes';
+import { SEARCH_USER_RECEIEVED, SEARCH_USER_REQUESTED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from '../constants/actionTypes';
 import { IUserList } from '../interface/IUserList';
 import { filterUserList, getUserData } from '../service/service';
 
@@ -19,7 +19,7 @@ function* getUserList(): any {
 function* searchUser(action: IUserPayload): any {
   const updatedList = filterUserList(action.payload, action.searchValue.toLowerCase());
 
-  yield put({ type: USER_LIST_RECEIEVED, payload: updatedList });
+  yield put({ type: SEARCH_USER_RECEIEVED, payload: updatedList });
 }
 
 function* actionWatcher() {

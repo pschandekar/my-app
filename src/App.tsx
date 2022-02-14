@@ -8,6 +8,7 @@ import UserList from "./components/UserList";
 
 function App() {
   const userList = useSelector((state: any) => state.userReducer?.userList)
+  const filteredUserList = useSelector((state: any) => state.userReducer?.filteredUserList)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -17,11 +18,7 @@ function App() {
 
   // search user from the list on any column
   const handleOnChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value !== '' && userList && userList.length > 0) {
-      dispatch(searchUser(userList, event.target.value.toLowerCase()))
-    } else {
-      dispatch(getUserList());
-    }
+    dispatch(searchUser(userList, event.target.value.toLowerCase()))
   }
 
   return (
@@ -37,7 +34,7 @@ function App() {
         {
           userList && userList.length > 0 &&
           <UserList
-            userList={userList}
+            userList={filteredUserList && filteredUserList.length > 0 ? filteredUserList : userList}
           />
         }
       </div>

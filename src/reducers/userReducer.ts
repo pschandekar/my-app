@@ -1,17 +1,17 @@
-import { USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from "../constants/actionTypes"
-//import service from "../service";
+import { SEARCH_USER_RECEIEVED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from "../constants/actionTypes"
 
 const initialState = {
-  userList: []
+  userList: [],
+  filteredUserList: []
 }
 
 export default function userReduc(state = initialState, action: any) {
 
   switch (action.type) {
-    case USER_LIST_REQUESTED:
-      return { ...state, userList: action.payload }
     case USER_LIST_RECEIEVED:
       return { ...state, userList: action.payload }
+    case SEARCH_USER_RECEIEVED:
+      return { ...state, filteredUserList: action.payload }
 
     default:
       return state;
