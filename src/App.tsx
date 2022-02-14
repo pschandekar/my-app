@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, searchUser } from "./actions/userAction";
+import { getUserList, searchUser } from "./actions/userAction";
 import UserList from "./components/UserList";
 
 
@@ -11,7 +11,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getUser())
+    dispatch(getUserList())
   }, [])
 
 
@@ -20,7 +20,7 @@ function App() {
     if (event.target.value !== '' && userList && userList.length > 0) {
       dispatch(searchUser(userList, event.target.value.toLowerCase()))
     } else {
-      dispatch(getUser());
+      dispatch(getUserList());
     }
   }
 

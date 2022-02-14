@@ -1,11 +1,11 @@
-import axios from 'axios';
 import { put, takeLatest, all, call } from 'redux-saga/effects';
 import { SEARCH_USER_REQUESTED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from '../constants/actionTypes';
-import { getUserData } from '../service/service';
+import { IUserList } from '../interface/IUserList';
+import { filterUserList, getUserData } from '../service/service';
 
 interface IUserPayload {
   type: string,
-  payload: any,
+  payload: Array<IUserList>,
   searchValue: string
 }
 
@@ -17,16 +17,7 @@ function* getUserList(): any {
 
 // search the user as per user input value
 function* searchUser(action: IUserPayload): any {
-  // exclude column list from filter
-  const excludeColumns = ["id"];
-  let updatedList = action.payload;
-  const searchValue = action.searchValue.toLowerCase();
-
-  updatedList = updatedList.filter((item: any) => {
-    return Object.keys(item).some(key =>
-      excludeColumns.includes(key) ? false : item[key].toString().toLowerCase().includes(searchValue)
-    );
-  });
+  const updatedList = filterUserList(action.payload, action.searchValue.toLowerCase());
 
   yield put({ type: USER_LIST_RECEIEVED, payload: updatedList });
 }
