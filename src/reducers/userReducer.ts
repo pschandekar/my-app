@@ -1,4 +1,4 @@
-import { SEARCH_USER_RECEIEVED, USER_LIST_RECEIEVED, USER_LIST_REQUESTED } from "../constants/actionTypes"
+import { SEARCH_USER_RECEIEVED, USER_LIST_RECEIEVED } from "../constants/actionTypes"
 
 const initialState = {
   userList: [],
